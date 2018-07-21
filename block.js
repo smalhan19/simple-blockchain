@@ -20,10 +20,12 @@ class Block {
       Data     : ${this.data}`;
   }
 
+  // The first block of a chain
   static genesis() {
     return new this('Genesis time', '-----', 'f1r57-h45h', [])
   }
 
+  // The process of mining a block is to compute the hash of last block's hash plus the current blocks data
   static mineBlock(lastBlock, data) {
     const timestamp = Date.now();
     const lastHash = lastBlock.hash;
@@ -34,6 +36,12 @@ class Block {
 
   static hash(timestamp, lastHash, data) {
     return SHA256(`${timestamp}${lastHash}${data}`).toString();
+  }
+
+  // essentially a wrapper for the hash function, which takes a block itself instead of individual attributes
+  static blockHash(block) {
+    const { timestamp, lastHash, data } = block;
+    return Block.hash(timestamp, lastHash, data);
   }
 }
 
