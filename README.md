@@ -1,0 +1,3 @@
+This is a simple blockchain application that will be used to explore how cryptocurrencies function.
+
+To be updated with further details...
