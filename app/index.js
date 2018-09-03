@@ -7,6 +7,7 @@ const P2pserver = require('./p2p-server');
 // allow user to specify port, or use 3001 by default
 const HTTP_PORT = process.env.HTTP_PORT || 3001;
 
+// use express to start up webservice, initialize a new blockchain, and P2P for communicating with other nodes on network
 const app = express();
 const bc = new Blockchain();
 const p2pServer = new P2pserver(bc);
